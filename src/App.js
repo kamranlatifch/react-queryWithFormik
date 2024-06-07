@@ -12,7 +12,7 @@
             <QueryClientProvider client={queryClient}>
               <BrowserRouter>
                 <Routes>
-                  <Route path="/" exact element={<Home/>}/>
+                  <Route path="/:id" exact element={<Home/>}/>
                   
                 </Routes>
               </BrowserRouter>
