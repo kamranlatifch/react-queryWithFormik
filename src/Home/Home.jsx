@@ -1,4 +1,4 @@
-    import { Container, Flex, Heading, Stack, Text } from "@chakra-ui/react";
+    import { Container, Flex, Grid, Heading, Spinner, Stack, Text, useToast } from "@chakra-ui/react";
     import axios from "axios";
     import React from "react";
     import { useQuery } from "react-query";
@@ -17,13 +17,26 @@
 
 
     const Home=()=>{
-    const {data:PostsData, isLoading:PostsLoading}=useQuery('posts',fetchPosts);
+
+        const toast=useToast();
+    const {data:PostsData, isLoading:PostsLoading}=useQuery('posts',fetchPosts,{onError:(error)=>{
+        toast({status:"error", title:error.message})
+    }});
         
         console.log("Posts Data is",PostsData)
         return (
         <Container maxW="1300px" mt="4">
+            {PostsLoading?<Grid placeItems="center" height="100vh">
+                <Spinner/>
+            </Grid>:
+            <>
             {PostsData?.data?.map((post)=>(
-            <Stack p="4" boxShadow="md" borderRadius="xl" border="1px solid #ccc">
+            <Stack key={post.id} 
+            p="4" boxShadow="md"
+             borderRadius="xl"
+              border="1px solid #ccc"
+              mb="4"
+              >
 
             <Flex justify="space-between">
                 <Text>
@@ -39,6 +52,9 @@
             <Text>{post?.body}</Text>
             </Stack>
             ))}
+            </>
+            }
+            
            
         </Container>
         )
