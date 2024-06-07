@@ -279,6 +279,7 @@ const Home = () => {
   }, [id]);
 
   const { data: PostsData, isLoading: PostsLoading } = useQuery(['posts', pageNumber], () => fetchPosts(pageNumber), {
+   keepPreviousData:true,
     onError: (error) => {
       toast({ status: "error", title: error.message });
     }
