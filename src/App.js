@@ -4,6 +4,7 @@
       import Home from './Home/Home';
       // import { ReactQueryDevtools } from 'react-query-devtools';
       import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import Post from './Post/Post';
       function App() {
 
         const queryClient=new QueryClient();
@@ -13,6 +14,7 @@
               <BrowserRouter>
                 <Routes>
                   <Route path="/:id" exact element={<Home/>}/>
+                  <Route path="/post/:id" exact element={<Post/>}/>
                   
                 </Routes>
               </BrowserRouter>

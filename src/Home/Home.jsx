@@ -254,7 +254,7 @@ import { Button, Container, Flex, Grid, Heading, Spinner, Stack, Text, useToast 
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 const fetchPosts = async (pageNumber) => {
   try {
@@ -373,8 +373,10 @@ const Home = () => {
             </Button>
           </Flex>
           {PostsData?.data?.map((post) => (
+
+            <Link key={post.id} to={`/post/${post.id}`}>
             <Stack
-              key={post.id}
+              
               p="4"
               boxShadow="md"
               borderRadius="xl"
@@ -394,6 +396,7 @@ const Home = () => {
               </Heading>
               <Text>{post?.body}</Text>
             </Stack>
+            </Link>
           ))}
         </>
       )}
