@@ -27,16 +27,16 @@
 
             <Flex justify="space-between">
                 <Text>
-                    UserId:
+                    UserId:{post?.user_id}
                 </Text>
                 <Text>
-                    PostId:
+                    PostId:{post?.id}
                 </Text>
             </Flex>
             <Heading fontSize="2xl">
-                Title
+                {post?.title}
             </Heading>
-            <Text>COntent</Text>
+            <Text>{post?.body}</Text>
             </Stack>
             ))}
            
