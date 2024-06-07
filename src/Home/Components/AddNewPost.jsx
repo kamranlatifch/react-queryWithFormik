@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Form, Formik } from 'formik'
 import { InputControl, SubmitButton, TextareaControl } from 'formik-chakra-ui'
 import React from 'react'
-import { useMutation } from 'react-query'
+import { useMutation, useQueryClient } from 'react-query'
 const addNewPostCall=async ({title,body})=>{
   try{
       const {data}=await axios.post('https://gorest.co.in/public/v1/users/6952391/posts',{
@@ -24,8 +24,13 @@ const addNewPostCall=async ({title,body})=>{
 
 const AddNewPOst = () => {
 const toast=useToast();
+const cache=useQueryClient();
   const {isLoading, data,mutateAsync}=useMutation('addNewPost',addNewPostCall,{
-    onError:(error)=>{
+    
+    onSuccess:()=>{
+      cache.invalidateQueries("posts")
+    },  
+      onError:(error)=>{
       toast({status:"error",title:error.message})
     }
   })
