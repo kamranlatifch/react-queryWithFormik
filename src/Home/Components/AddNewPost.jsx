@@ -52,7 +52,7 @@ const AddNewPOst = () => {
           <Stack my="4" mb="2">
             <Heading fontSize="2xl" textAlign="center">
               {" "}
-              Add New Post
+              Add New POST
             </Heading>
           </Stack>
           <InputControl name="title" label="Title" />
