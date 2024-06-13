@@ -109,7 +109,7 @@ const Home = () => {
         <AddNewPost/>
           <Flex justify="space-between" mb="4" flexWrap="wrap">
             <Button colorScheme="red" onClick={handlePrev} disabled={pageNumber === 1}>
-              Prev
+              Pre
             </Button>
             <Flex gap="2" wrap="wrap">
               {displayPages().map((page, index) => (
